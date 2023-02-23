@@ -1,0 +1,604 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Jira Insight DB - 1.0.0",
+      "description": "Sample playbooks for \"Jira Insight DB\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "uuid": "56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+      "id": 86,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Jira",
+        "jira-insight-db"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Asset Attributes",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves attributes for a particular asset from the Jira server based on the asset ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131558,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/716689d1-1193-46b8-b1a6-332d494b484b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Asset Attributes",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "asset_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_asset_attributes",
+                "operationTitle": "Get Asset Attributes",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "324dec29-e46b-4fc8-96c9-10eece3578b6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "c29664c6-08be-4c34-82f5-e12449367853",
+                "title": "Jira Insight DB: Get Asset Attributes",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "716689d1-1193-46b8-b1a6-332d494b484b"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Asset Attributes",
+              "targetStep": "/api/3/workflow_steps/324dec29-e46b-4fc8-96c9-10eece3578b6",
+              "sourceStep": "/api/3/workflow_steps/716689d1-1193-46b8-b1a6-332d494b484b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9f5cf6fe-7c0b-4c60-92ab-e1219a78f386"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "45c437b8-3330-42a2-aa3b-6282591899a4",
+          "id": 1213,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Assets",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves assets from the Jira server based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131535,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ad954b7f-6e97-4e69-b70a-55929be74a3c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Assets",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "iql": "objectType = \"Host\"",
+                  "page": 1,
+                  "resultPerPage": 25,
+                  "includeAttributes": true,
+                  "includeExtendedInfo": false,
+                  "includeAttributesDeep": 1,
+                  "includeTypeAttributes": false
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_assets",
+                "operationTitle": "Get Assets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "6b7283e4-3bf7-4643-b69c-6c43a9d385d3"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "5d066f7a-224d-41a4-8605-cba4222c55d2",
+                "title": "Jira Insight DB: Get Assets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "ad954b7f-6e97-4e69-b70a-55929be74a3c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Assets",
+              "targetStep": "/api/3/workflow_steps/6b7283e4-3bf7-4643-b69c-6c43a9d385d3",
+              "sourceStep": "/api/3/workflow_steps/ad954b7f-6e97-4e69-b70a-55929be74a3c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8013b20f-62ed-4f27-af2b-67294c4b17d0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "4d7e82c1-450d-4f10-baf7-588f05a569dc",
+          "id": 1211,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Asset Details",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves details for a particular asset from the Jira server based on the asset ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131568,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a18518aa-2a5f-4780-b112-346f6f24d4be",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "7c2b357d-51a7-4075-b548-2ed0a0ad9786",
+                "title": "Jira Insight DB: Get Asset Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "a18518aa-2a5f-4780-b112-346f6f24d4be"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Asset Details",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "asset_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_asset_details",
+                "operationTitle": "Get Asset Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "be5a2ae0-d720-48b3-bf7b-fb78aba601d5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Asset Details",
+              "targetStep": "/api/3/workflow_steps/be5a2ae0-d720-48b3-bf7b-fb78aba601d5",
+              "sourceStep": "/api/3/workflow_steps/a18518aa-2a5f-4780-b112-346f6f24d4be",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d803adfd-d264-42ab-9cf8-83181fc2edfe"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "841f15fe-5a23-4f87-aa12-e7fdeba6284c",
+          "id": 1212,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Asset Connected Tickets",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves the connected tickets for a particular asset from the Jira server based on the asset ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131527,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/bf5dd31d-99a9-4d07-91ed-be38037bb590",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Asset Connected Tickets",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "asset_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_asset_connected_tickets",
+                "operationTitle": "Get Asset Connected Tickets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "8da7c5c0-ded9-4d43-aedc-7d100c108e9e"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "45b329c4-c4fc-4020-8fe0-46a032718c36",
+                "title": "Jira Insight DB: Get Asset Connected Tickets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "bf5dd31d-99a9-4d07-91ed-be38037bb590"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Asset Connected Tickets",
+              "targetStep": "/api/3/workflow_steps/8da7c5c0-ded9-4d43-aedc-7d100c108e9e",
+              "sourceStep": "/api/3/workflow_steps/bf5dd31d-99a9-4d07-91ed-be38037bb590",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "644e22b3-9b2a-46e0-a2a3-f29e51d9d289"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "b2f07b95-794b-4cfd-af2a-a61712220c77",
+          "id": 1216,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Asset History",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves history for a particular asset from the Jira server based on the asset ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131551,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/dd752b27-27f6-4caf-8264-516a7fce3ba2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Asset History",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "asc": true,
+                  "asset_id": "1",
+                  "abbreviate": true
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_asset_history",
+                "operationTitle": "Get Asset History",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "7e6c49f8-d663-4a3e-8f31-324981291019"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "84ca95c4-5538-4316-86a3-8e1021581c7a",
+                "title": "Jira Insight DB: Get Asset History",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "dd752b27-27f6-4caf-8264-516a7fce3ba2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Asset History",
+              "targetStep": "/api/3/workflow_steps/7e6c49f8-d663-4a3e-8f31-324981291019",
+              "sourceStep": "/api/3/workflow_steps/dd752b27-27f6-4caf-8264-516a7fce3ba2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "318066ab-6627-4f2e-9d09-765810e817e1"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "c06fe129-d116-4b58-8ca1-c5cbe2faf835",
+          "id": 1214,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Asset Reference Information",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Retrieves reference information for a particular asset from the Jira server based on the asset ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677131542,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/9b323378-749b-42cd-b3cf-46e542c38434",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "81dc32f7-39f2-4181-8581-470bdf9df734",
+                "title": "Jira Insight DB: Get Asset Reference Information",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "9b323378-749b-42cd-b3cf-46e542c38434"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Asset Reference Information",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "asset_id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "jira-insight-db",
+                "operation": "get_asset_reference_info",
+                "operationTitle": "Get Asset Reference Information",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "188",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "a8eecba2-a793-4808-972e-20178207661d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Asset Reference Information",
+              "targetStep": "/api/3/workflow_steps/a8eecba2-a793-4808-972e-20178207661d",
+              "sourceStep": "/api/3/workflow_steps/9b323378-749b-42cd-b3cf-46e542c38434",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "56be0d8f-7a1c-4a12-8fba-47073871acc9"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "d70fafba-7dba-4fa3-999f-ae42f6226925",
+          "id": 1215,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Jira",
+    "jira-insight-db"
+  ]
+}
