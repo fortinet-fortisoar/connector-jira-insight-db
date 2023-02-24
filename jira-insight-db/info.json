@@ -6,7 +6,7 @@
   "cs_approved": false,
   "cs_compatible": true,
   "version": "1.0.0",
-  "category": "Asset Management",
+  "category": "Ticket Management",
   "icon_small_name": "jira_small.png",
   "icon_large_name": "jira_large.png",
   "help_online": "",
@@ -54,7 +54,7 @@
   "operations": [
     {
       "operation": "get_assets",
-      "title": "Get Assets",
+      "title": "Get Assets List",
       "description": "Retrieves assets from the Jira server based on the input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_assets",

@@ -114,7 +114,7 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Assets",
+          "name": "Get Assets List",
           "aliasName": null,
           "tag": "#Jira Insight DB",
           "description": "Retrieves assets from the Jira server based on the input parameters you have specified.",
@@ -131,7 +131,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get Assets",
+              "name": "Get Assets List",
               "description": null,
               "arguments": {
                 "name": "Jira Insight DB",
@@ -148,7 +148,7 @@
                 "version": "1.0.0",
                 "connector": "jira-insight-db",
                 "operation": "get_assets",
-                "operationTitle": "Get Assets",
+                "operationTitle": "Get Assets List",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -166,7 +166,7 @@
               "description": null,
               "arguments": {
                 "route": "5d066f7a-224d-41a4-8605-cba4222c55d2",
-                "title": "Jira Insight DB: Get Assets",
+                "title": "Jira Insight DB: Get Assets List",
                 "resources": [
                   "alerts"
                 ],
@@ -191,7 +191,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start-> Get Assets",
+              "name": "Start-> Get Assets List",
               "targetStep": "/api/3/workflow_steps/6b7283e4-3bf7-4643-b69c-6c43a9d385d3",
               "sourceStep": "/api/3/workflow_steps/ad954b7f-6e97-4e69-b70a-55929be74a3c",
               "label": null,
