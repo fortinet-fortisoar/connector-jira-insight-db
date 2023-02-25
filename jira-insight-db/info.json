@@ -1,0 +1,596 @@
+{
+  "name": "jira-insight-db",
+  "label": "Jira Insight DB",
+  "description": "Jira Insight gives teams a simple and quick way to tie assets and configuration items to service requests, incidents, problems, changes, and other issues to gain valuable context.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Ticket Management",
+  "icon_small_name": "jira_small.png",
+  "icon_large_name": "jira_large.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "description": "URL for the Jira server from where the connector gets notifications.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url"
+      },
+      {
+        "title": "Username",
+        "description": "Username configured for your account to access the Jira server from where the connector gets notifications.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "username"
+      },
+      {
+        "title": "API Token",
+        "description": "API Token configured for your account to access the Jira server from where the connector gets notifications.",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "token"
+      },
+      {
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.Defaults to True.",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_assets",
+      "title": "Get Assets List",
+      "description": "Retrieves assets from the Jira server based on the input parameters you have specified.",
+      "category": "investigation",
+      "annotation": "get_assets",
+      "output_schema": {
+        "objectEntries": [
+          {
+            "id": "",
+            "label": "",
+            "objectKey": "",
+            "avatar": {
+              "url16": "",
+              "url48": "",
+              "url72": "",
+              "url144": "",
+              "url288": "",
+              "objectId": ""
+            },
+            "objectType": {
+              "id": "",
+              "name": "",
+              "type": "",
+              "icon": {
+                "id": "",
+                "name": "",
+                "url16": "",
+                "url48": ""
+              },
+              "position": "",
+              "created": "",
+              "updated": "",
+              "objectCount": "",
+              "objectSchemaId": "",
+              "inherited": "",
+              "abstractObjectType": "",
+              "parentObjectTypeInherited": ""
+            },
+            "created": "",
+            "updated": "",
+            "hasAvatar": "",
+            "timestamp": "",
+            "attributes": [
+              {
+                "id": "",
+                "objectTypeAttributeId": "",
+                "objectAttributeValues": [
+                  {
+                    "value": "",
+                    "searchValue": "",
+                    "displayValue": "",
+                    "referencedType": ""
+                  }
+                ],
+                "objectId": ""
+              }
+            ],
+            "_links": {
+              "self": ""
+            },
+            "name": ""
+          }
+        ],
+        "objectTypeAttributes": [
+          {
+            "id": "",
+            "name": "",
+            "label": "",
+            "type": "",
+            "defaultType": {
+              "id": "",
+              "name": ""
+            },
+            "editable": "",
+            "system": "",
+            "sortable": "",
+            "summable": "",
+            "minimumCardinality": "",
+            "maximumCardinality": "",
+            "removable": "",
+            "hidden": "",
+            "includeChildObjectTypes": "",
+            "uniqueAttribute": "",
+            "options": "",
+            "position": ""
+          }
+        ],
+        "objectTypeId": "",
+        "objectTypeIsInherited": "",
+        "abstractObjectType": "",
+        "totalFilterCount": "",
+        "startIndex": "",
+        "toIndex": "",
+        "pageObjectSize": "",
+        "pageNumber": "",
+        "orderWay": "",
+        "iql": "",
+        "iqlSearchResult": "",
+        "conversionPossible": "",
+        "pageSize": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Insight Query Language(IQL)",
+          "description": "The query to determine which objects that should be fetched. E.g. objectType = \"Computer\". The empty IQL means all objects.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "objectType = \"Host\" AND Operating System = \"Ubuntu (64-bit)\"",
+          "placeholder": "objectType = \"Host\" AND Operating System = \"Ubuntu (64-bit)\"",
+          "name": "iql",
+          "value": ""
+        },
+        {
+          "title": "Page Number",
+          "description": "Which page to fetch when paginating through the response from your configured Jira server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "page",
+          "value": 1
+        },
+        {
+          "title": "Result Per Page",
+          "description": "The amount of objects returned per page from your configured Jira server.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "resultPerPage",
+          "value": 25
+        },
+        {
+          "title": "Include Attributes",
+          "description": "Should the objects attributes be included in the response. If this parameter is false only the information on the object will be returned and the object attributes will not be present. By default set to True.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "includeAttributes",
+          "value": true
+        },
+        {
+          "title": "Include Attributes Deep",
+          "description": "How many levels of attributes should be included. E.g. consider an object A that has a reference to object B that has a reference to object C. If object A is included in the response and includeAttributesDeep=1 object A's reference to object B will be included in the attributes of object A but object B's reference to object C will not be included. However if the includeAttributesDeep=2 then object B's reference to object C will be included in object B's attributes.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "includeAttributesDeep",
+          "value": 1
+        },
+        {
+          "title": "Include Type Attributes",
+          "description": "Should the response include the object type attribute definition for each attribute that is returned with the objects. By default set to False.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "includeTypeAttributes",
+          "value": false
+        },
+        {
+          "title": "Include Extended Info",
+          "description": "Include information about open issues and attachments. Should each object have information if open tickets are connected to the object or if the object has attachments. By default set to False.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "includeExtendedInfo",
+          "value": false
+        }
+      ]
+    },
+    {
+      "operation": "get_asset_details",
+      "title": "Get Asset Details",
+      "description": "Retrieves details for a particular asset from the Jira server based on the asset ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_asset_details",
+      "output_schema": {
+        "id": "",
+        "label": "",
+        "objectKey": "",
+        "avatar": {
+          "url16": "",
+          "url48": "",
+          "url72": "",
+          "url144": "",
+          "url288": "",
+          "objectId": ""
+        },
+        "objectType": {
+          "id": "",
+          "name": "",
+          "type": "",
+          "icon": {
+            "id": "",
+            "name": "",
+            "url16": "",
+            "url48": ""
+          },
+          "position": "",
+          "created": "",
+          "updated": "",
+          "objectCount": "",
+          "objectSchemaId": "",
+          "inherited": "",
+          "abstractObjectType": "",
+          "parentObjectTypeInherited": ""
+        },
+        "created": "",
+        "updated": "",
+        "hasAvatar": "",
+        "timestamp": "",
+        "attributes": [
+          {
+            "id": "",
+            "objectTypeAttribute": {
+              "id": "",
+              "name": "",
+              "label": "",
+              "type": "",
+              "defaultType": {
+                "id": "",
+                "name": ""
+              },
+              "editable": "",
+              "system": "",
+              "sortable": "",
+              "summable": "",
+              "minimumCardinality": "",
+              "maximumCardinality": "",
+              "removable": "",
+              "hidden": "",
+              "includeChildObjectTypes": "",
+              "uniqueAttribute": "",
+              "options": "",
+              "position": ""
+            },
+            "objectTypeAttributeId": "",
+            "objectAttributeValues": [
+              {
+                "value": "",
+                "searchValue": "",
+                "displayValue": "",
+                "referencedType": ""
+              }
+            ],
+            "objectId": ""
+          }
+        ],
+        "extendedInfo": {
+          "openIssuesExists": "",
+          "attachmentsExists": ""
+        },
+        "_links": {
+          "self": ""
+        },
+        "name": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Asset ID",
+          "description": "Asset ID whose information you want to retrieve from your configured Jira server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "asset_id",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "operation": "get_asset_attributes",
+      "title": "Get Asset Attributes",
+      "description": "Retrieves attributes for a particular asset from the Jira server based on the asset ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_asset_attributes",
+      "output_schema": {
+        "id": "",
+        "label": "",
+        "objectKey": "",
+        "avatar": {
+          "url16": "",
+          "url48": "",
+          "url72": "",
+          "url144": "",
+          "url288": "",
+          "objectId": ""
+        },
+        "objectType": {
+          "id": "",
+          "name": "",
+          "type": "",
+          "icon": {
+            "id": "",
+            "name": "",
+            "url16": "",
+            "url48": ""
+          },
+          "position": "",
+          "created": "",
+          "updated": "",
+          "objectCount": "",
+          "objectSchemaId": "",
+          "inherited": "",
+          "abstractObjectType": "",
+          "parentObjectTypeInherited": ""
+        },
+        "created": "",
+        "updated": "",
+        "hasAvatar": "",
+        "timestamp": "",
+        "attributes": [
+          {
+            "id": "",
+            "objectTypeAttribute": {
+              "id": "",
+              "name": "",
+              "label": "",
+              "type": "",
+              "defaultType": {
+                "id": "",
+                "name": ""
+              },
+              "editable": "",
+              "system": "",
+              "sortable": "",
+              "summable": "",
+              "minimumCardinality": "",
+              "maximumCardinality": "",
+              "removable": "",
+              "hidden": "",
+              "includeChildObjectTypes": "",
+              "uniqueAttribute": "",
+              "options": "",
+              "position": ""
+            },
+            "objectTypeAttributeId": "",
+            "objectAttributeValues": [
+              {
+                "value": "",
+                "searchValue": "",
+                "displayValue": "",
+                "referencedType": ""
+              }
+            ],
+            "objectId": ""
+          }
+        ],
+        "extendedInfo": {
+          "openIssuesExists": "",
+          "attachmentsExists": ""
+        },
+        "_links": {
+          "self": ""
+        },
+        "name": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Asset ID",
+          "description": "Asset ID whose attributes you want to retrieve from your configured Jira server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "asset_id",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "operation": "get_asset_history",
+      "title": "Get Asset History",
+      "description": "Retrieves history for a particular asset from the Jira server based on the asset ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_asset_history",
+      "output_schema": [
+        {
+          "actor": {
+            "avatarUrl": "",
+            "displayName": "",
+            "name": "",
+            "key": "",
+            "renderedLink": "",
+            "isDeleted": ""
+          },
+          "id": "",
+          "affectedAttribute": "",
+          "oldValue": "",
+          "newValue": "",
+          "type": "",
+          "created": "",
+          "objectId": ""
+        }
+      ],
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Asset ID",
+          "description": "Asset ID whose history you want to retrieve from your configured Jira server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "asset_id",
+          "value": ""
+        },
+        {
+          "title": "Sort in Ascending Order",
+          "description": "Sort parameter to retrieve history in ascending order from your configured Jira server. By default set to True.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "asc",
+          "value": true
+        },
+        {
+          "title": "Abbreviate",
+          "description": "This parameter to abbreviate the history from your configured Jira server. By default set to True.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "abbreviate",
+          "value": true
+        }
+      ]
+    },
+    {
+      "operation": "get_asset_reference_info",
+      "title": "Get Asset Reference Information",
+      "description": "Retrieves reference information for a particular asset from the Jira server based on the asset ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_asset_reference_info",
+      "output_schema": [
+        {
+          "referenceTypes": [
+            {
+              "id": "",
+              "name": "",
+              "description": "",
+              "color": "",
+              "url16": "",
+              "removable": ""
+            }
+          ],
+          "objectType": {
+            "id": "",
+            "name": "",
+            "type": "",
+            "icon": {
+              "id": "",
+              "name": "",
+              "url16": "",
+              "url48": ""
+            },
+            "position": "",
+            "created": "",
+            "updated": "",
+            "objectCount": "",
+            "objectSchemaId": "",
+            "inherited": "",
+            "abstractObjectType": "",
+            "parentObjectTypeInherited": ""
+          },
+          "numberOfReferencedObjects": "",
+          "openIssuesExists": ""
+        }
+      ],
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Asset ID",
+          "description": "Asset ID whose reference information you want to retrieve from your configured Jira server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "asset_id",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "operation": "get_asset_connected_tickets",
+      "title": "Get Asset Connected Tickets",
+      "description": "Retrieves the connected tickets for a particular asset from the Jira server based on the asset ID you have specified.",
+      "category": "investigation",
+      "annotation": "get_asset_connected_tickets",
+      "output_schema": {
+        "tickets": [
+          {
+            "key": "",
+            "id": "",
+            "reporter": "",
+            "created": "",
+            "updated": "",
+            "title": "",
+            "status": {
+              "name": "",
+              "colorName": ""
+            },
+            "type": {
+              "name": "",
+              "description": "",
+              "iconUrl": ""
+            },
+            "priority": {
+              "name": "",
+              "iconUrl": ""
+            }
+          }
+        ],
+        "allTicketsQuery": ""
+      },
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Asset ID",
+          "description": "Asset ID whose connected tickets you want to retrieve from your configured Jira server.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "asset_id",
+          "value": ""
+        }
+      ]
+    }
+  ]
+}
