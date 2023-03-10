@@ -9,12 +9,12 @@
   "category": "Ticket Management",
   "icon_small_name": "jira_small.png",
   "icon_large_name": "jira_large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/jira-insight-db/521/jira-insight-db-v1-0-0",
   "configuration": {
     "fields": [
       {
         "title": "Server URL",
-        "description": "URL for the Jira server from where the connector gets notifications.",
+        "description": "URL for the Jira server to connect and perform automated operations.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -23,7 +23,7 @@
       },
       {
         "title": "Username",
-        "description": "Username configured for your account to access the Jira server from where the connector gets notifications.",
+        "description": "Username configured for your account to access the Jira server to connect and perform automated operations.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -32,7 +32,7 @@
       },
       {
         "title": "API Token",
-        "description": "API Token configured for your account to access the Jira server from where the connector gets notifications.",
+        "description": "API Token configured for your account to access the Jira server to connect and perform automated operations.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -41,7 +41,7 @@
       },
       {
         "title": "Verify SSL",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not.Defaults to True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True.",
         "required": false,
         "editable": true,
         "visible": true,
@@ -55,7 +55,7 @@
     {
       "operation": "get_assets",
       "title": "Get Assets List",
-      "description": "Retrieves assets from the Jira server based on the input parameters you have specified.",
+      "description": "Retrieves assets from the Jira server based on the Insight Query Language, page number, attributes, and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_assets",
       "output_schema": {
@@ -158,7 +158,7 @@
       "parameters": [
         {
           "title": "Insight Query Language(IQL)",
-          "description": "The query to determine which objects that should be fetched. E.g. objectType = \"Computer\". The empty IQL means all objects.",
+          "description": "Specify the query to determine the objects being fetched. E.g. objectType = \"Computer\". The empty IQL means all objects.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -170,7 +170,7 @@
         },
         {
           "title": "Page Number",
-          "description": "Which page to fetch when paginating through the response from your configured Jira server.",
+          "description": "Specify the page to fetch when paginating through the response from your configured Jira server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -180,7 +180,7 @@
         },
         {
           "title": "Result Per Page",
-          "description": "The amount of objects returned per page from your configured Jira server.",
+          "description": "Specify the number of objects returned per page from your configured Jira server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -190,7 +190,7 @@
         },
         {
           "title": "Include Attributes",
-          "description": "Should the objects attributes be included in the response. If this parameter is false only the information on the object will be returned and the object attributes will not be present. By default set to True.",
+          "description": "Specify whether the object attributes be included in the response. If this parameter is false, only the information on the object is returned and the object attributes are not present. By default, it is set to True.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -200,7 +200,7 @@
         },
         {
           "title": "Include Attributes Deep",
-          "description": "How many levels of attributes should be included. E.g. consider an object A that has a reference to object B that has a reference to object C. If object A is included in the response and includeAttributesDeep=1 object A's reference to object B will be included in the attributes of object A but object B's reference to object C will not be included. However if the includeAttributesDeep=2 then object B's reference to object C will be included in object B's attributes.",
+          "description": "Specify the level depth of attributes to be included. For example, consider an object A that has a reference to object B that further has a reference to object C. If object A is included in the response and include attribute depth is set to 1 u.e.includeAttributesDeep=1, object A's reference to object B is included in the attributes of object A; however, object B's reference to object C is not included. To include object B's reference to object C object B's attributes set include attribute depth to 2 i.e. includeAttributesDeep=2.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -210,7 +210,7 @@
         },
         {
           "title": "Include Type Attributes",
-          "description": "Should the response include the object type attribute definition for each attribute that is returned with the objects. By default set to False.",
+          "description": "Select to include the object type attribute definition for each attribute returned with the objects. By default, this parameter is set to False.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -220,7 +220,7 @@
         },
         {
           "title": "Include Extended Info",
-          "description": "Include information about open issues and attachments. Should each object have information if open tickets are connected to the object or if the object has attachments. By default set to False.",
+          "description": "Select to include the following information: open issues, if open issues are associated with objects, if objects have attachments. By default set to False. ",
           "required": false,
           "editable": true,
           "visible": true,
@@ -321,7 +321,7 @@
       "parameters": [
         {
           "title": "Asset ID",
-          "description": "Asset ID whose information you want to retrieve from your configured Jira server.",
+          "description": "Specify the asset ID whose information you want to retrieve from your configured Jira server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -422,7 +422,7 @@
       "parameters": [
         {
           "title": "Asset ID",
-          "description": "Asset ID whose attributes you want to retrieve from your configured Jira server.",
+          "description": "Specify the asset ID whose attributes you want to retrieve from your configured Jira server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -435,7 +435,7 @@
     {
       "operation": "get_asset_history",
       "title": "Get Asset History",
-      "description": "Retrieves history for a particular asset from the Jira server based on the asset ID you have specified.",
+      "description": "Retrieves history for a particular asset from the Jira server based on the asset ID and sort order you have specified.",
       "category": "investigation",
       "annotation": "get_asset_history",
       "output_schema": [
@@ -461,7 +461,7 @@
       "parameters": [
         {
           "title": "Asset ID",
-          "description": "Asset ID whose history you want to retrieve from your configured Jira server.",
+          "description": "Specify the asset ID whose history you want to retrieve from your configured Jira server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -471,7 +471,7 @@
         },
         {
           "title": "Sort in Ascending Order",
-          "description": "Sort parameter to retrieve history in ascending order from your configured Jira server. By default set to True.",
+          "description": "Select to sort parameter to retrieve history in ascending order from your configured Jira server. By default, set to True.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -481,7 +481,7 @@
         },
         {
           "title": "Abbreviate",
-          "description": "This parameter to abbreviate the history from your configured Jira server. By default set to True.",
+          "description": "Select to abbreviate the history from your configured Jira server. By default, set to True.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -536,7 +536,7 @@
       "parameters": [
         {
           "title": "Asset ID",
-          "description": "Asset ID whose reference information you want to retrieve from your configured Jira server.",
+          "description": "Specify the asset ID whose reference information you want to retrieve from your configured Jira server.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -582,7 +582,7 @@
       "parameters": [
         {
           "title": "Asset ID",
-          "description": "Asset ID whose connected tickets you want to retrieve from your configured Jira server.",
+          "description": "Specify the asset ID whose connected tickets you want to retrieve from your configured Jira server.",
           "required": true,
           "editable": true,
           "visible": true,
