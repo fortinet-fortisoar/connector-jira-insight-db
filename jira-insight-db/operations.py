@@ -23,12 +23,12 @@ def get_config(config):
         raise ConnectorError(Err)
 
 
-def make_api_call(config, method='GET', endpoint=None, json=None, headers=None, files=None, params=None, data=None):
+def make_api_call(config, method='GET', endpoint=None, json=None, headers=None, params=None, data=None):
     server, username, token, verify_ssl = get_config(config)
     if server.startswith('https://'):
         server = server.strip('/') + '/rest/insight/1.0'
     else:
-        server = 'https://{0}'.format(server) + '/rest/insight/1.0'
+        server = server + '/rest/insight/1.0'
     if not headers:
         headers = {'content-type': 'application/json', 'accept': 'application/json'}
     if endpoint:
@@ -37,8 +37,7 @@ def make_api_call(config, method='GET', endpoint=None, json=None, headers=None, 
         url = server
     logger.info('Request URL {}'.format(url))
     try:
-        response = requests.request(method=method, url=url, auth=(username, token), headers=headers, files=files,
-                                    data=json, params=params, verify=verify_ssl)
+        response = requests.request(method=method, url=url, auth=(username, token), headers=headers, data=data, params=params, verify=verify_ssl)
         if response.ok:
             return response.json()
         elif response.status_code == 401:
@@ -69,6 +68,60 @@ def check_health(config):
     except Exception as Err:
         logger.exception('Error occured while connecting server: {}'.format(str(Err)))
         raise ConnectorError('Error occured while connecting server: {}'.format(Err))
+
+
+def create_object(config, params):
+    try:
+        params = {k: v for k, v in params.items() if v is not None and v != ''}
+        endpoint = "/object/create"
+        other_fields = params.get('other_fields')
+        if 'objectTypeId' in other_fields:
+            payload = other_fields
+        else:
+            payload = {
+                "objectTypeId": params.get('objectTypeId'),
+                "attributes": [
+                    {
+                        "objectTypeAttributeId": params.get('objectTypeAttributeId'),
+                        "objectAttributeValues": [
+                            {
+                                "value": params.get('object_attribute_value')
+                            }
+                        ]
+                    }
+                ]
+            }
+        response = make_api_call(config, method='POST', endpoint=endpoint, data=json.dumps(payload))
+        return response
+    except Exception as Err:
+        raise ConnectorError(Err)
+
+
+def update_object(config, params):
+    try:
+        params = {k: v for k, v in params.items() if v is not None and v != ''}
+        endpoint = "/object/{object_id}".format(object_id=params.get('object_id'))
+        other_fields = params.get('other_fields')
+        if 'objectTypeId' in other_fields:
+            payload = other_fields
+        else:
+            payload = {
+                "objectTypeId": params.get('objectTypeId'),
+                "attributes": [
+                    {
+                        "objectTypeAttributeId": params.get('objectTypeAttributeId'),
+                        "objectAttributeValues": [
+                            {
+                                "value": params.get('object_attribute_value')
+                            }
+                        ]
+                    }
+                ]
+            }
+        response = make_api_call(config, method='PUT', endpoint=endpoint, data=json.dumps(payload))
+        return response
+    except Exception as Err:
+        raise ConnectorError(Err)
 
 
 def get_assets(config, params):
@@ -134,6 +187,8 @@ def get_asset_connected_tickets(config, params):
 
 
 operations = {
+    'create_object': create_object,
+    'update_object': update_object,
     'get_assets': get_assets,
     'get_asset_details': get_asset_details,
     'get_asset_attributes': get_asset_attributes,
