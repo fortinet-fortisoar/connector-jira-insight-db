@@ -3,12 +3,12 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Jira Insight DB - 1.0.0",
+      "name": "Sample - Jira Insight DB - 1.1.0",
       "description": "Sample playbooks for \"Jira Insight DB\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
-      "id": 86,
+      "id": 406,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -16,6 +16,105 @@
         "jira-insight-db"
       ],
       "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Object",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Update an existing object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1692206198,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/49b39c93-ffd2-4087-9e56-5c1b3d952b02",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0f79999e-7fb6-4edc-a730-8e31ba80b8b0",
+                "title": "Jira Insight DB: Get Assets List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "49b39c93-ffd2-4087-9e56-5c1b3d952b02"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Object",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "object_id": "",
+                  "objectTypeId": "",
+                  "other_fields": "{\n    \"objectTypeId\": 1,\n    \"attributes\": [\n        {\n            \"objectTypeAttributeId\": 7,\n            \"objectAttributeValues\": [\n                {\n                    \"value\": \"TEST-1\"\n                },\n                {\n                    \"value\": \"TEST-2\"\n                }\n            ]\n        }\n    ]\n}",
+                  "objectTypeAttributeId": "",
+                  "object_attribute_value": ""
+                },
+                "version": "1.1.0",
+                "connector": "jira-insight-db",
+                "operation": "update_object",
+                "operationTitle": "Update Object",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ebaec78c-4b28-425e-a0b6-9fa2d0941b94"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Assets List",
+              "targetStep": "/api/3/workflow_steps/ebaec78c-4b28-425e-a0b6-9fa2d0941b94",
+              "sourceStep": "/api/3/workflow_steps/49b39c93-ffd2-4087-9e56-5c1b3d952b02",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "3c34ab9f-353b-49b5-8662-0a69386fa440"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "3caa8c39-a846-401e-9286-0c0ec795f6f4",
+          "id": 5464,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
         {
           "@type": "Workflow",
           "triggerLimit": null,
@@ -44,7 +143,7 @@
                 "params": {
                   "asset_id": "1"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_asset_attributes",
                 "operationTitle": "Get Asset Attributes",
@@ -101,7 +200,7 @@
           "groups": [],
           "priority": null,
           "uuid": "45c437b8-3330-42a2-aa3b-6282591899a4",
-          "id": 1213,
+          "id": 5465,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -145,7 +244,7 @@
                   "includeAttributesDeep": 1,
                   "includeTypeAttributes": false
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_assets",
                 "operationTitle": "Get Assets List",
@@ -202,7 +301,7 @@
           "groups": [],
           "priority": null,
           "uuid": "4d7e82c1-450d-4f10-baf7-588f05a569dc",
-          "id": 1211,
+          "id": 5466,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -267,7 +366,7 @@
                 "params": {
                   "asset_id": "1"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_asset_details",
                 "operationTitle": "Get Asset Details",
@@ -297,7 +396,7 @@
           "groups": [],
           "priority": null,
           "uuid": "841f15fe-5a23-4f87-aa12-e7fdeba6284c",
-          "id": 1212,
+          "id": 5467,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -335,7 +434,7 @@
                 "params": {
                   "asset_id": "1"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_asset_connected_tickets",
                 "operationTitle": "Get Asset Connected Tickets",
@@ -392,7 +491,7 @@
           "groups": [],
           "priority": null,
           "uuid": "b2f07b95-794b-4cfd-af2a-a61712220c77",
-          "id": 1216,
+          "id": 5468,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -432,7 +531,7 @@
                   "asset_id": "1",
                   "abbreviate": true
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_asset_history",
                 "operationTitle": "Get Asset History",
@@ -489,7 +588,7 @@
           "groups": [],
           "priority": null,
           "uuid": "c06fe129-d116-4b58-8ca1-c5cbe2faf835",
-          "id": 1214,
+          "id": 5469,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -554,7 +653,7 @@
                 "params": {
                   "asset_id": "1"
                 },
-                "version": "1.0.0",
+                "version": "1.1.0",
                 "connector": "jira-insight-db",
                 "operation": "get_asset_reference_info",
                 "operationTitle": "Get Asset Reference Information",
@@ -584,7 +683,105 @@
           "groups": [],
           "priority": null,
           "uuid": "d70fafba-7dba-4fa3-999f-ae42f6226925",
-          "id": 1215,
+          "id": 5470,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Jira",
+            "jira-insight-db"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Create Object",
+          "aliasName": null,
+          "tag": "#Jira Insight DB",
+          "description": "Create an object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value and other input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1692250769,
+          "collection": "/api/3/workflow_collections/56da8d6d-d7e8-48fb-a86b-7bd3a689f974",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/57951447-f3f6-4d49-b928-b2cf3a7ce59b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ff0bbbab-feea-424f-8af7-7821569f24c5",
+                "title": "Jira Insight DB: Get Assets List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "20",
+              "left": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "57951447-f3f6-4d49-b928-b2cf3a7ce59b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Create Object",
+              "description": null,
+              "arguments": {
+                "name": "Jira Insight DB",
+                "config": "ac142604-895c-4084-be85-157f370254e7",
+                "params": {
+                  "objectTypeId": "",
+                  "other_fields": "{\n  \"objectTypeId\": \"736\",\n  \"attributes\": [\n    {\n      \"objectTypeAttributeId\": \"6531\",\n      \"objectAttributeValues\": [\n        {\n          \"value\": \"alertPlatformId\"\n        }\n      ]\n    },\n    {\n      \"objectTypeAttributeId\": \"8009\",\n      \"objectAttributeValues\": [\n        {\n          \"value\": \"platformKey\"\n        }\n      ]\n    }\n  ]\n}",
+                  "objectTypeAttributeId": "",
+                  "object_attribute_value": ""
+                },
+                "version": "1.1.0",
+                "connector": "jira-insight-db",
+                "operation": "create_object",
+                "operationTitle": "Create Object",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "120",
+              "left": "180",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "636835d6-f337-42e9-93bb-8896dc0d6b91"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Assets List",
+              "targetStep": "/api/3/workflow_steps/636835d6-f337-42e9-93bb-8896dc0d6b91",
+              "sourceStep": "/api/3/workflow_steps/57951447-f3f6-4d49-b928-b2cf3a7ce59b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d60768ec-49d4-4559-a9b0-d5a09a415834"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "f257716b-a0cd-46f1-8991-665f33d673b4",
+          "id": 5471,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
