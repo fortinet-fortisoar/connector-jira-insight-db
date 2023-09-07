@@ -1,3 +1,3 @@
 #### What's Improved
-- Added a new action and playbook named "Add Object" and "Update Object". 
+- Added a new actions and playbooks named "Add Object" and "Update Object". 
 

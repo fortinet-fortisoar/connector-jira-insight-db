@@ -9,7 +9,7 @@
   "category": "Ticket Management",
   "icon_small_name": "jira_small.png",
   "icon_large_name": "jira_large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/jira-insight-db/676/jira-insight-db-v1-1-0",
   "configuration": {
     "fields": [
       {
@@ -55,9 +55,9 @@
     {
       "operation": "create_object",
       "title": "Create Object",
-      "description": "Create an object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value and other input parameters you have specified.",
+      "description": "Creates an object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value, and other input parameters you have specified.",
       "category": "investigation",
-      "annotation": "update_object",
+      "annotation": "create_object",
       "output_schema": {
         "workspaceId": "",
         "globalId": "",
@@ -154,7 +154,7 @@
       "parameters": [
         {
           "title": "Object Type ID",
-          "description": "The object type determines where the object should be stored and which attributes are available.",
+          "description": "Specify the object type ID that determines where the object should be stored and which attributes are available.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -164,7 +164,7 @@
         },
         {
           "title": "Object Type Attribute ID",
-          "description": "The type of the attribute. The type decides how this value should be interpreted.",
+          "description": "Specify the type of the attribute that decides how this value should be interpreted.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -174,7 +174,7 @@
         },
         {
           "title": "Object Attribute Values",
-          "description": "The value used to update the object in Jira Insight server.",
+          "description": "Specify the value to create the object in Jira Insight server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -190,14 +190,14 @@
           "type": "json",
           "name": "other_fields",
           "tooltip": "JSON field provided to enable you to enter other fields while creating an object.",
-          "description": "(Optional) Additional fields in the JSON format that you want to add to the object, which you want to create in Jira Insight DB."
+          "description": "(Optional) Additional fields, in JSON format, that you want to add to the object being created in Jira Insight DB."
         }
       ]
     },
     {
       "operation": "update_object",
       "title": "Update Object",
-      "description": "Update an existing object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value and other input parameters you have specified.",
+      "description": "Updates an existing object in Jira Insight server based on the Object ID, Object Type Attribute ID, Object Attribute Value, and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "update_object",
       "output_schema": {
@@ -296,7 +296,7 @@
       "parameters": [
         {
           "title": "Object ID",
-          "description": "Specify the object ID which needs to be updated in Jira Insight server.",
+          "description": "Specify the object ID that needs to be updated in Jira Insight server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -308,7 +308,7 @@
         },
         {
           "title": "Object Type ID",
-          "description": "The object type determines where the object should be stored and which attributes are available.",
+          "description": "Specify the object type ID that determines where the object should be stored and which attributes are available.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -318,7 +318,7 @@
         },
         {
           "title": "Object Type Attribute ID",
-          "description": "The type of the attribute. The type decides how this value should be interpreted.",
+          "description": "Specify the type of the attribute that decides how this value should be interpreted.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -328,7 +328,7 @@
         },
         {
           "title": "Object Attribute Values",
-          "description": "The value used to update the object in Jira Insight server.",
+          "description": "Specify the value to update for the object in Jira Insight server.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -344,7 +344,7 @@
           "type": "json",
           "name": "other_fields",
           "tooltip": "JSON field provided to enable you to enter other fields while updating an object.",
-          "description": "(Optional) Additional fields in the JSON format that you want to update the object, which you want to create in Jira Insight DB."
+          "description": "(Optional) Specify additional fields, in JSON format, that you want to update for the object being updated in Jira Insight DB."
         }
       ]
     },
